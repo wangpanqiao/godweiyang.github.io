@@ -1,3 +1,4 @@
+https://godweiyang.com/2020/03/20/leetcode-41/
 https://godweiyang.com/2020/03/19/leetcode-interview-62/
 https://godweiyang.com/2020/03/18/leetcode-99/
 https://godweiyang.com/2020/03/17/leetcode-137/
@@ -97,4 +98,3 @@ https://godweiyang.com/2019/03/31/iclr18-prpn/
 https://godweiyang.com/2019/03/11/naacl19-conparsing/
 https://godweiyang.com/2019/03/11/conparseqlab/
 https://godweiyang.com/2019/01/13/latex-pdf/
-https://godweiyang.com/2018/12/31/2018-conclusion/

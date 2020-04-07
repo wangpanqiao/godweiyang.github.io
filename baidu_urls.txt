@@ -1,3 +1,4 @@
+https://godweiyang.com/2020/04/07/leetcode-interview-01-07/
 https://godweiyang.com/2020/04/06/leetcode-72/
 https://godweiyang.com/2020/04/05/leetcode-229/
 https://godweiyang.com/2020/04/04/my-first-paper/
@@ -97,4 +98,3 @@ https://godweiyang.com/2020/01/09/leetcode-1004/
 https://godweiyang.com/2020/01/09/emnlp19-palm/
 https://godweiyang.com/2020/01/09/leetcode-1053/
 https://godweiyang.com/2020/01/08/leetcode-315/
-https://godweiyang.com/2020/01/07/software-share/

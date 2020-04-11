@@ -333,7 +333,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -492,7 +492,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    748
+                    746
                 </div>
                 
 
@@ -530,8 +530,7 @@
 nums1 = [1,2,3,0,0,0], m = 3
 nums2 = [2,5,6],       n = 3
 输出:
-[1,2,2,3,5,6]
-解释：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+[1,2,2,3,5,6]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>看到这道题，脑海里应该第一时间想到的是归并排序，但是归并排序需要一个额外的数组用来保存排序后的数组，这里不允许使用额外空间。</p>
 <p>那么我们还是用归并排序的思路来做，试一下两个指针 <code>i = 0</code> 和 <code>j = 0</code> ，初始的时候分别指着 <code>nums1[0]</code> 和 <code>nums2[0]</code> 。然后比较 <code>nums1[i]</code> 和 <code>nums2[j]</code> 大小，如果 <code>nums1[i]</code> 更小，那么就放在原位不动它，然后 <code>i += 1</code>。如果 <code>nums2[j]</code> 更小，那么就交换 <code>nums1[i]</code> 和 <code>nums2[j]</code> ，然后还是 <code>i += 1</code>。这么看貌似可行哦？但是最终一定会先遍历完 <code>nums1</code>，然后 <code>j</code> 还是停留在 <code>0</code> ，然后你会发现 <code>nums2</code> 中的数字还是乱序的，根本没法处理。</p>
 <p>那么怎么利用上 <code>nums1</code> 后面多出的那么多空位呢？我们可以换个思路，从最大的开始遍历。两个指针初始的时候 <code>i = m-1</code> 和 <code>j = n-1</code> ，然后将较大值填充到 <code>nums1</code> 的最后面。最后如果 <code>nums2</code> 中还有剩余，就依次填充到 <code>nums1</code> 最前面就行了。</p>
@@ -1048,34 +1047,33 @@ nums2 = [2,5,6],       n = 3
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/10/leetcode-88/">
+                <a href="/2020/04/11/leetcode-interview-16-06/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="【每日算法Day 96】腾讯面试题：合并两个有序数组">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="【每日算法Day 97】经典面试题：求两个数组最小差">
                         
-                        <span class="card-title">【每日算法Day 96】腾讯面试题：合并两个有序数组</span>
+                        <span class="card-title">【每日算法Day 97】经典面试题：求两个数组最小差</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-昨天腾讯一面上来就给我整的这道 easy 难度的题，然后我太紧张了还想了一会儿，差点炸裂。
+                            题目链接LeetCode 面试题 16.06. 最小差
+题目描述给定两个整数数组 a 和 b，计算具有最小差绝对值的一对数值（每个数组中取一个值），并返回该对数值的差。
+说明：
 
-题目链接LeetCode 88. 合并两个有序数组
-题目描述给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 num
+1 &lt;= a.length, b.length &lt
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1088,7 +1086,6 @@ nums2 = [2,5,6],       n = 3
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1115,7 +1112,7 @@ nums2 = [2,5,6],       n = 3
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="【每日算法Day 95】美团笔试题：四面体方案个数">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="【每日算法Day 95】美团笔试题：四面体方案个数">
                         
                         <span class="card-title">【每日算法Day 95】美团笔试题：四面体方案个数</span>
                     </div>
@@ -1339,7 +1336,7 @@ nums2 = [2,5,6],       n = 3
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">253.2k</span>
+            <span class="white-color">253.8k</span>
             
 
             <br>

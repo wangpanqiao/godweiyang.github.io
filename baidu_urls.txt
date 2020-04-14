@@ -1,3 +1,4 @@
+https://godweiyang.com/2020/04/14/byte-dance-interview/
 https://godweiyang.com/2020/04/13/leetcode-846/
 https://godweiyang.com/2020/04/12/leetcode-interview-60/
 https://godweiyang.com/2020/04/11/leetcode-interview-16-06/
@@ -97,4 +98,3 @@ https://godweiyang.com/2020/01/15/leetcode-1031/
 https://godweiyang.com/2020/01/15/leetcode-330/
 https://godweiyang.com/2020/01/14/5w2h-godweiyang/
 https://godweiyang.com/2020/01/13/leetcode-124/
-https://godweiyang.com/2020/01/12/leetcode-357/

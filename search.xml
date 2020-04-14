@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【每日算法Day 100】字节 AI Lab 面试编程题（三道）</title>
+      <link href="/2020/04/14/byte-dance-interview/"/>
+      <url>/2020/04/14/byte-dance-interview/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>今天连着面了两次字节跳动，勉强撑到了明天三面。一共三道编程题，做的很烂，这里分享一下。</p></blockquote><h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><p>给出一条长度为 <code>L</code> 的线段，除了头和尾两个点以外，上面还有 <code>n</code> 个整数点，需要在上面再放 <code>k</code> 个新的点，使得相邻的两个点之间的最大距离最小，求这个最小的距离。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>我当时太紧张了，真是脑抽了，还想着弄个优先队列，划分最大的，然后丢进去，再划分最大的，但是是错的。</p><p>正确解法小姐姐走了我才想起来，二分答案 <code>m</code> ，然后扫描一遍判断将每一段划分成小于等于 <code>m</code> 的一共需要多少次。如果次数大于 <code>k</code> ，说明 <code>m</code> 太短了，否则说明 <code>m</code> 太长了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> L<span class="token punctuation">,</span> n<span class="token punctuation">,</span> k<span class="token punctuation">;</span>    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>L<span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">a</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    a<span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">;</span>    <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> L<span class="token number">-1</span><span class="token punctuation">;</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">int</span> m <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>            cnt <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> a<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> m<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">></span> k<span class="token punctuation">)</span> l <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">else</span> r <span class="token operator">=</span> m<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    cout <span class="token operator">&lt;&lt;</span> l <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><p>给出一个数组 <code>A</code>，找到最大的 <code>A[i] - A[j]</code>，要求 <code>i &gt; j</code>。</p><h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>这题很简单，直接遍历每个 <code>A[i]</code>，维护它前面最小的那个数 <code>minn</code>，然后求出最大的 <code>A[i] - minn</code> 就行了。</p><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> n<span class="token punctuation">;</span>    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">a</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">int</span> minn <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> res <span class="token operator">=</span> INT_MIN<span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>minn<span class="token punctuation">)</span><span class="token punctuation">;</span>        minn <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>minn<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    cout <span class="token operator">&lt;&lt;</span> res <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h2><p>给定一个字符串，对该字符串进行删除操作，保留 <code>k</code> 个字符且相对位置不变，使字典序最小。</p><h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>这题也脑抽了，想了一堆方法，<code>dp</code> 复杂度太高，线段树太麻烦，最后用 <code>map</code> 勉强写了一下。</p><p>主要思想是这样的，最后要保留 <code>k</code> 个字符，那么第一个字符只能在下标 <code>0 ~ n-k</code> 中寻找，那肯定找最小的啊，如果有多个就找最前面那个，把它的位置记为 <code>pos</code>。</p><p>然后第二个字符肯定得在下标 <code>pos ~ n-k+1</code> 中寻找，还是一样的思路，找到以后更新 <code>pos</code> 位置，依次找下去找到 <code>k</code> 个为止。</p><p>所以我就利用了 <code>map</code> 的特性，把寻找窗口内的字符个数做一下统计，然后取出 <code>map</code> 中的第一个字符就是字典序最小的了，次数减一，如果减到 0 了就删除掉。</p><p>然后从 <code>pos</code> 位置开始遍历，直到第一个等于你刚刚取出的字符为止，更新 <code>pos</code> 位置。</p><p>最终的时间复杂度是 $O(n \log n + n \log k)$ ，可以直接看作 $O(n \log n)$ 。</p><p><strong>最优解：</strong></p><p>最优解当时没想出来，是用单调栈。维护一个递增的单调栈，我们的目标是保留 <code>k</code> 个字符，也就是删除 <code>n-k</code> 个字符。</p><p>那么如果栈顶元素大于当前遍历元素，并且还没删够 <code>n-k</code> 个，就出栈，当作删除了一个元素。否则的话如果删够了，不管大小关系统统入栈，因为你没法删了。</p><p>最后全遍历完了，如果还没删够，那就继续出栈，直到删够为止。最后把栈里的字符拼接成一个字符串就是答案了。</p><p>时间复杂度是 $O(n)$ 的。</p><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>string <span class="token function">f</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    map<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> mp<span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token operator">-</span>k<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        mp<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    string res <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> k<span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">char</span> c <span class="token operator">=</span> mp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>first<span class="token punctuation">;</span>        res <span class="token operator">+</span><span class="token operator">=</span> c<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> pos<span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token operator">-</span>i<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>            mp<span class="token punctuation">[</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mp<span class="token punctuation">[</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> mp<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>                pos <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token keyword">break</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>        mp<span class="token punctuation">[</span>s<span class="token punctuation">[</span>n<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> res<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    string s<span class="token punctuation">;</span>    <span class="token keyword">int</span> k<span class="token punctuation">;</span>    cin <span class="token operator">>></span> s <span class="token operator">>></span> k<span class="token punctuation">;</span>    cout <span class="token operator">&lt;&lt;</span> <span class="token function">f</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> k<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>最优解：</strong></p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>string <span class="token function">f</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    k <span class="token operator">=</span> n <span class="token operator">-</span> k<span class="token punctuation">;</span>    stack<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span> st<span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>st<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>            st<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            k<span class="token operator">--</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        st<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    string res <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>st<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>k<span class="token punctuation">)</span> k<span class="token operator">--</span><span class="token punctuation">;</span>        <span class="token keyword">else</span> res <span class="token operator">+</span><span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        st<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token function">reverse</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> res<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    string s<span class="token punctuation">;</span>    <span class="token keyword">int</span> k<span class="token punctuation">;</span>    cin <span class="token operator">>></span> s <span class="token operator">>></span> k<span class="token punctuation">;</span>    cout <span class="token operator">&lt;&lt;</span> <span class="token function">f</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> k<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>关注公众号【算法码上来】，每日算法干货马上就来！<br><img src="/medias/contact.jpg" alt></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【每日算法Day 99】你们可能不知道只用20万赢到578万是什么概念</title>
       <link href="/2020/04/13/leetcode-846/"/>
       <url>/2020/04/13/leetcode-846/</url>
@@ -20,9 +47,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -47,9 +74,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -74,9 +101,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -101,9 +128,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -128,9 +155,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -155,9 +182,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -182,9 +209,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -209,9 +236,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -236,9 +263,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -290,9 +317,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -317,9 +344,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -344,9 +371,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -371,9 +398,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -398,9 +425,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -425,9 +452,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -452,9 +479,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -479,9 +506,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -506,9 +533,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -533,9 +560,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -560,9 +587,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -587,9 +614,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -614,9 +641,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -641,9 +668,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -668,9 +695,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -695,9 +722,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -722,9 +749,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -749,9 +776,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -776,9 +803,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -803,9 +830,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -830,9 +857,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -857,9 +884,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -884,9 +911,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -911,9 +938,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -938,9 +965,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -965,9 +992,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -992,9 +1019,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1019,9 +1046,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1046,9 +1073,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1073,9 +1100,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1100,9 +1127,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1127,9 +1154,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1154,9 +1181,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1210,9 +1237,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1237,9 +1264,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1264,9 +1291,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1291,9 +1318,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1318,9 +1345,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1345,9 +1372,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1372,9 +1399,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1399,9 +1426,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1426,9 +1453,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1453,9 +1480,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1505,9 +1532,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1532,9 +1559,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1559,9 +1586,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1586,9 +1613,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1613,9 +1640,9 @@
       
         <tags>
             
-            <tag> eoj </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> eoj </tag>
             
         </tags>
       
@@ -1640,9 +1667,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1667,9 +1694,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1694,9 +1721,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1721,9 +1748,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1748,9 +1775,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1775,9 +1802,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1802,9 +1829,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1829,9 +1856,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1856,9 +1883,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1883,9 +1910,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1910,9 +1937,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1937,9 +1964,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1964,9 +1991,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2018,9 +2045,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2045,9 +2072,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2072,9 +2099,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2099,9 +2126,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2126,9 +2153,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2153,9 +2180,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2180,9 +2207,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2207,9 +2234,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2234,9 +2261,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2261,9 +2288,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2288,9 +2315,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2340,9 +2367,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2367,9 +2394,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2394,9 +2421,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2421,9 +2448,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2448,9 +2475,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2475,9 +2502,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2502,9 +2529,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2529,9 +2556,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2556,9 +2583,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2583,9 +2610,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2610,9 +2637,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2662,9 +2689,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2689,9 +2716,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2716,9 +2743,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2743,9 +2770,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2770,9 +2797,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2826,9 +2853,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2853,9 +2880,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -2905,9 +2932,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -3853,9 +3880,9 @@
       
         <tags>
             
-            <tag> eoj </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> eoj </tag>
             
         </tags>
       
@@ -3880,9 +3907,9 @@
       
         <tags>
             
-            <tag> eoj </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> eoj </tag>
             
         </tags>
       
@@ -4190,9 +4217,9 @@
             
             <tag> 博客 </tag>
             
-            <tag> github </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> github </tag>
             
         </tags>
       
@@ -5156,9 +5183,9 @@
       
         <tags>
             
-            <tag> eoj </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> eoj </tag>
             
         </tags>
       

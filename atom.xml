@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godweiyang.com/"/>
-  <updated>2020-04-16T10:21:27.868Z</updated>
+  <updated>2020-04-17T07:35:33.871Z</updated>
   <id>https://godweiyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【每日算法Day 103】老题新做，几乎不会有人想到的解法，它来了</title>
+    <link href="https://godweiyang.com/2020/04/17/leetcode-846-v2/"/>
+    <id>https://godweiyang.com/2020/04/17/leetcode-846-v2/</id>
+    <published>2020-04-17T03:30:53.000Z</published>
+    <updated>2020-04-17T07:35:33.871Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;前两天 Day 99 的时候，做过一道顺子的题目，当时有一个网友的妙解有点没看懂，今天我来给大家详细讲解一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="编程算法" scheme="https://godweiyang.com/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="https://godweiyang.com/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://godweiyang.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>【每日算法Day 102】美团 AI 平台算法工程师面试编程题</title>
@@ -560,38 +591,6 @@
     <id>https://godweiyang.com/2020/03/30/leetcode-390/</id>
     <published>2020-03-30T02:59:45.000Z</published>
     <updated>2020-03-30T12:44:02.734Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;关注公众号【算法码上来】，每日算法干货马上就来！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/medias/contact.jpg&quot; alt&gt;&lt;/p&gt;
-&lt;h2 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="编程算法" scheme="https://godweiyang.com/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="leetcode" scheme="https://godweiyang.com/tags/leetcode/"/>
-    
-      <category term="算法" scheme="https://godweiyang.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【每日算法Day 84】面试必考题：Trie（字典树/前缀树）的实现</title>
-    <link href="https://godweiyang.com/2020/03/29/leetcode-208/"/>
-    <id>https://godweiyang.com/2020/03/29/leetcode-208/</id>
-    <published>2020-03-29T04:42:43.000Z</published>
-    <updated>2020-03-29T05:44:00.352Z</updated>
     
     <summary type="html">
     

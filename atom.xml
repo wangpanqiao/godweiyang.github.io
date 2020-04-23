@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godweiyang.com/"/>
-  <updated>2020-04-22T04:47:10.075Z</updated>
+  <updated>2020-04-23T08:03:48.028Z</updated>
   <id>https://godweiyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【每日算法Day 109】五大解法，带你深入了解完全背包方案数</title>
+    <link href="https://godweiyang.com/2020/04/23/leetcode-interview-08-11/"/>
+    <id>https://godweiyang.com/2020/04/23/leetcode-interview-08-11/</id>
+    <published>2020-04-23T06:40:14.000Z</published>
+    <updated>2020-04-23T08:03:48.028Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;今天这题是完全背包问题 + 背包问题方案数，我一共列举了 5 种解法，层层递进优化。并且从两个角度殊途同归，最终优化到同一个式子。强烈建议掌握，对理解背包问题有很大帮助。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;题目链接&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="编程算法" scheme="https://godweiyang.com/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="https://godweiyang.com/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://godweiyang.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>【每日算法Day 108】一道简单的二叉树题目，写法还是挺多的。</title>
@@ -573,35 +604,6 @@
       <category term="ACL" scheme="https://godweiyang.com/tags/ACL/"/>
     
       <category term="经验总结" scheme="https://godweiyang.com/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【每日算法Day 90】5种方法：求解数组中出现次数超过一半的那个数</title>
-    <link href="https://godweiyang.com/2020/04/04/leetcode-inteview-39/"/>
-    <id>https://godweiyang.com/2020/04/04/leetcode-inteview-39/</id>
-    <published>2020-04-04T06:39:28.000Z</published>
-    <updated>2020-04-04T08:19:25.292Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;1.jpg&quot; alt=&quot;论文中了，非常感谢各位的支持！&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot; title=&quot;题目链接&quot;&gt;&lt;/a&gt;题目链接&lt;/h2&gt;&lt;p&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="编程算法" scheme="https://godweiyang.com/categories/%E7%BC%96%E7%A8%8B%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="leetcode" scheme="https://godweiyang.com/tags/leetcode/"/>
-    
-      <category term="算法" scheme="https://godweiyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
